@@ -30,10 +30,10 @@ Semua file python merupakan aplikasi backend, untuk mengedit frontend silakan bu
     localhost:8000
     ```
 ## Referensi Belajar
-Apa itu rest api https://www.mii.co.id/en/insight/listing/2021/06/21/03/58/konsep-restful-api-programming-bagian-1
-Apa itu flask https://id.wikipedia.org/wiki/Flask
-Dokumentasi Flask https://flask.palletsprojects.com/en/2.2.0/
-Flask Tutorial https://www.youtube.com/watch?v=GMppyAPbLYk&t=2936s
-Rest API Di Flask https://flask-restful.readthedocs.io/en/latest/intermediate-usage.html
-Cara mencoba api menggunakan postman https://www.youtube.com/watch?v=DEO_xM17vsI
-Cara mengambil data dari api menggunakan javascript https://www.proweb.co.id/articles/js/async-await-fetch.html
+- Apa itu rest api https://www.mii.co.id/en/insight/listing/2021/06/21/03/58/konsep-restful-api-programming-bagian-1
+- Apa itu flask https://id.wikipedia.org/wiki/Flask
+- Dokumentasi Flask https://flask.palletsprojects.com/en/2.2.0/
+- Flask Tutorial https://www.youtube.com/watch?v=GMppyAPbLYk&t=2936s
+- Rest API Di Flask https://flask-restful.readthedocs.io/en/latest/intermediate-usage.html
+- Cara mencoba api menggunakan postman https://www.youtube.com/watch?v=DEO_xM17vsI
+- Cara mengambil data dari api menggunakan javascript https://www.proweb.co.id/articles/js/async-await-fetch.html
