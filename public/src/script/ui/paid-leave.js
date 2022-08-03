@@ -151,13 +151,13 @@ async function getPaidLeaves() {
     }
 }
 
-function isPaidLeavePayloadAreValid(reason, startDate, endDate) {
+function isPaidLeavePayloadAreValid(startDate, endDate, reason) {
     if (reason === '' || startDate === '' || endDate === '') {
         alert('Please fill all the fields')
         return false
     }
 
-    if (startDate >= endDate) {
+    if (startDate > endDate) {
         alert('Start date must be less than end date')
         return false
     }
