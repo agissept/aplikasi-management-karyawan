@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slip Gaji</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/style/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="src/style/payroll.css">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+</head>
+<body>
+<div class="header">
+    <div class="side-nav">
+        <a href="dashboard.html" class="logo">
+            <img src="src/image/Logo.png" class="logo-img">
+        </a>
+        <ul class="nav-links">
+            <li><a href="dashboard.html"><i class="fas fa-house-user"></i>
+                <p>Dashboard</p></a></li>
+            <li><a href="paid-leave.html"><i class="fas fa-comment-dots"></i>
+                <p>Input Cuti</p></a></li>
+            <li><a href="overtime.html"><i class="fas fa-user-friends"></i>
+                <p>Lembur</p></a></li>
+            <li><a href="attendance.html"><i class="fas fa-box-open"></i>
+                <p>Absen</p></a></li>
+            <li><a href="payroll.html"><i class="fas fa-chart-pie"></i>
+                <p>Gaji</p></a></li>
+            <li><a href="#"><i class="fas fa-tools"></i>
+                <p>Setting</p></a></li>
+            <div class="active"></div>
+        </ul>
+    </div>
+</div>
+
+    <center><h2>Daftar Gaji Pegawai</h2></center>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <label>Nama Lengkap</label>
+                    <input type="text" name="nama" id="nama">
+                </div>
+                <div>
+                    <label>Jam Kerja</label>
+				    <input type="number" name="jamkrj" id="jamkrj">
+                </div>
+                <div>
+                    <label>Upah/Jam</label>
+                    <input type="number" name="upahperjam" id="upahperjam">
+                </div>
+                <div>
+                    <label>Jam Lembur</label>
+                    <input type="number" name="lembur" id="lembur">
+                </div>
+                <div>
+                    <label>Jumlah Anak</label>
+                    <input type="number" name="jmlanak" id="jmlanak">
+                </div>
+                <div>
+                    <button onclick="check()" class="button">Send</button>
+                </div>
+
+                <!--untuk menampilkan output hasil-->
+                <table>
+                    <tr>
+                        <td>Gaji Pokok</td>
+                        <td><disabled id="gajipokok"></td>
+                    </tr>
+                    <tr>
+                        <td>Tunjangan Anak</td>
+                        <td><disabled id="tunjangan"></td>
+                    </tr>
+                    <tr>
+                        <td>Jam Lembur</td>
+                        <td><disabled id="lembur"></td>
+                    </tr>
+                    <tr>
+                        <td>Total Gaji/Bulan</td>
+                        <td><disabled id="gajisebelumpajak"></td>
+                    </tr>
+                    <tr>
+                        <td>PPH 11%</td>
+                        <td><disabled id="pajak"></td>
+                    </tr>
+                    <tr>
+                        <td>Gaji Bersih</td>
+                        <td><disabled id="gajibersih"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        var nama;
+        var jamkrj;
+        var upahperjam;
+        var jamlembur;
+        var jmlanak;
+        function check() {
+            nama = document.getElementById("nama").value;
+            jamkrj = parseInt(document.getElementById("jamkrj").value);
+            upahperjam = parseInt(document.getElementById("upahperjam").value);
+            jamlembur = parseInt(document.getElementById("lembur").value);
+            jmlanak = parseInt(document.getElementById("jmlanak").value);
+
+            gajipokok = jamkrj * upahperjam * 20;
+            tunjangan = jmlanak * gajipokok / 10;
+            totallembur = 0;
+            gajisebelumpajak = gajipokok + tunjangan;
+            pajak = gajisebelumpajak * 11/100;
+            gajibersih = gajisebelumpajak - pajak;
+
+            document.getElementById('gajipokok').innerHTML = "" + gajipokok;
+            document.getElementById('tunjangan').innerHTML = "" + tunjangan;
+            document.getElementById('lembur').innerHTML = "" + totallembur;
+            document.getElementById('gajisebelumpajak').innerHTML = "" + gajisebelumpajak;
+            document.getElementById('pajak').innerHTML = "" + pajak;
+            document.getElementById('gajibersih').innerHTML = "" + gajibersih;
+        }
+    </script>
+
+</body>
+</html>

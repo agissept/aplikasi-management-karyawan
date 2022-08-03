@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Input Cuti</title>
+    <link rel="stylesheet" href="src/style/paid-leave.css">
+    <link rel="stylesheet" href="src/style/dashboard.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body style="display: flex">
+<div class="header">
+    <div class="side-nav">
+        <a href="dashboard.html" class="logo">
+            <img src="src/image/Logo.png" class="logo-img">
+        </a>
+        <ul class="nav-links">
+            <li><a href="dashboard.html"><i class="fas fa-house-user"></i>
+                <p>Dashboard</p></a></li>
+            <li><a href="paid-leave.html"><i class="fas fa-comment-dots"></i>
+                <p>Input Cuti</p></a></li>
+            <li><a href="overtime.html"><i class="fas fa-user-friends"></i>
+                <p>Lembur</p></a></li>
+            <li><a href="attendance.html"><i class="fas fa-box-open"></i>
+                <p>Absen</p></a></li>
+            <li><a href="payroll.html"><i class="fas fa-chart-pie"></i>
+                <p>Gaji</p></a></li>
+            <li><a href="#"><i class="fas fa-tools"></i>
+                <p>Setting</p></a></li>
+            <div class="active"></div>
+        </ul>
+    </div>
+</div>
+<table>
+    <tr>
+        <td>
+            <form>
+                <div>
+                    <label>Nama Lengkap *</label><label class="val-error hide" id="NlValError">Bagian Ini
+                    diperlukan.</label>
+                    <input type="text" name="NL" id="full-name" disabled>
+                </div>
+                <div>
+                    <label>No Induk Karyawan *</label><label class="val-error hide" id="NikValError">Bagian Ini
+                    diperlukan.</label>
+                    <input type="text" name="Nik" id="user-id" disabled>
+                </div>
+                <div>
+                    <label>Alasan Cuti</label>
+                    <input type="text" name="cuti" id="reason" required>
+                </div>
+                <div>
+                    <label>Tanggal Pengajuan Cuti *</label><label class="val-error hide" id="tglValError">Bagian Ini
+                    diperlukan.</label><br>
+                    <label>Dari</label>
+                    <input type="date" name="tgl" id="start-date" required>
+                    <label>Sampai</label>
+                    <input type="date" name="tgl" id="end-date" required>
+                </div>
+                <div class="form-action-buttons">
+                    <input type="submit" class="btn" value="Submit" id="btn-submit">
+                </div>
+            </form>
+        </td>
+        <td style="vertical-align: top;">
+            <table class="list" id="paid-leave-table" >
+                <thead>
+                <tr>
+                    <th class="th1">Nama Lengkap</th>
+                    <th class="th2">No Induk Karyawan</th>
+                    <th>Alasan Cuti</th>
+                    <th>Dari Tanggal</th>
+                    <th>Sampai Tanggal</th>
+                    <!--                                <th>Aksi</th>-->
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</table>
+<script src="src/script/ui/paid-leave.js" type="module"></script>
+</body>
+
+</html>

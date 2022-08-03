@@ -1,0 +1,22 @@
+.card-attendance{
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+.card-attendance h2{
+    text-align: center;
+}
+
+.card-title h4.title{
+    margin-top: 10px;
+}
+
+.card-title p{
+    font-weight: normal;
+}
+
+.card-attendance h3{
+    margin-top: 40px;
+    text-align: center;
+}
