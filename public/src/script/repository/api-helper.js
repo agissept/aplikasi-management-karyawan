@@ -32,7 +32,14 @@ async function registerUser(username, password, fullName) {
         method: 'POST',
         body: formData
     })
-    return response.json()
+
+    const json = await response.json()
+
+    if (response.status !== 201) {
+        throw new Error(`Register User Failed : ${json.message}`)
+    }
+
+    return json
 
 }
 
