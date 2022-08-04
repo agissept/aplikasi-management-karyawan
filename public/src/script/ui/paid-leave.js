@@ -145,8 +145,7 @@ async function getPaidLeaves() {
         row.insertCell().innerHTML = paidLeave.full_name
         row.insertCell().innerHTML = paidLeave.user_id
         row.insertCell().innerHTML = paidLeave.reason
-        row.insertCell().innerHTML = paidLeave.start_date
-        row.insertCell().innerHTML = paidLeave.end_date
+        row.insertCell().innerHTML = paidLeave.date
 
     }
 }
