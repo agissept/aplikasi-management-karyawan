@@ -21,4 +21,7 @@ jobs:
           cd ~/aplikasi-management-karyawan
           git pull origin master
           pip install -r requerements.txt
+          mysql -u root -p${{ secrets.DB_PASSWORD }} -e "drop database kepegawaian"
+          mysql -u root -p${{ secrets.DB_PASSWORD }} -e "create database kepegawaian"
+          mysql -u root -p${{ secrets.DB_PASSWORD }} kepegawaian < database/kepegawaian.sql
           sudo systemctl restart aplikasi-management-karyawan.service
