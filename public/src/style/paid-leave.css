@@ -13,7 +13,6 @@ table{
 .list{
     width:100%;
     position:static;
-
     justify-content:space-around;
 
 }
@@ -83,26 +82,6 @@ label.val-error{
     display:none;
 }
 
-.btn{
-	display: block;
-	width: 50%;
-	height: 50px;
-	border-radius: 25px;
-	outline: none;
-	border: none;
-	background-image: linear-gradient(to right, #0070f0, #0070f0, #0070f0);
-	background-size: 200%;
-	font-size: 1.2rem;
-	color: #fff;
-	font-family: 'Poppins', sans-serif;
-	text-transform: uppercase;
-	margin: 1rem 0;
-	cursor: pointer;
-	transition: .5s;
-}
-.btn:hover{
-	background-position: right;
-}
 
 .btn-edit {
     background-color: #f0ad4e;
