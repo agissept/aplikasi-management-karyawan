@@ -40,6 +40,7 @@ async function renderTable(paidLeaves) {
             <td>${paidLeave.policy}</td>
             <td>${paidLeave.date}</td>
             <td>Approved</td>
+            <td>${paidLeave.attachment}</td>
         `
         container.appendChild(row)
     })
