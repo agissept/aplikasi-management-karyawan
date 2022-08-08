@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Aug 04, 2022 at 04:49 PM
+-- Generation Time: Aug 08, 2022 at 04:30 PM
 -- Server version: 10.8.3-MariaDB-1:10.8.3+maria~jammy
 -- PHP Version: 8.0.20
 
@@ -57,27 +57,11 @@ CREATE TABLE `paid_leaves` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `reason` text NOT NULL,
+  `policy` varchar(100) NOT NULL,
+  `attachment` text DEFAULT NULL,
   `date` date NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `paid_leaves`
---
-
-INSERT INTO `paid_leaves` (`id`, `user_id`, `reason`, `date`, `created_at`) VALUES
-(23, 1111, '1111', '2020-09-09', '2022-08-04 16:16:18'),
-(24, 1111, '1111', '2022-08-04', '2022-08-04 16:26:37'),
-(25, 1111, '1111', '2022-08-05', '2022-08-04 16:26:37'),
-(26, 1111, '1111', '2022-08-06', '2022-08-04 16:27:28'),
-(27, 1111, '1111', '2022-08-07', '2022-08-04 16:27:28'),
-(28, 1111, '1111', '2022-08-08', '2022-08-04 16:29:24'),
-(29, 1111, '1111', '2022-08-09', '2022-08-04 16:29:24'),
-(30, 1111, '1111', '2022-08-10', '2022-08-04 16:29:24'),
-(31, 1111, '1111', '2022-08-11', '2022-08-04 16:29:24'),
-(32, 1111, '1111', '2022-08-12', '2022-08-04 16:29:24'),
-(33, 1111, '1111', '2022-08-13', '2022-08-04 16:29:24'),
-(34, 1111, '1111', '2022-08-15', '2022-08-04 16:29:51');
 
 -- --------------------------------------------------------
 
@@ -175,7 +159,7 @@ ALTER TABLE `attendances`
 -- AUTO_INCREMENT for table `paid_leaves`
 --
 ALTER TABLE `paid_leaves`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
 -- Constraints for dumped tables
@@ -186,6 +170,12 @@ ALTER TABLE `paid_leaves`
 --
 ALTER TABLE `attendances`
   ADD CONSTRAINT `attendances_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `paid_leaves`
+--
+ALTER TABLE `paid_leaves`
+  ADD CONSTRAINT `paid_leaves_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
