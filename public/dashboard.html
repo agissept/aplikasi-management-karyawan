@@ -10,7 +10,7 @@
 <body>
 <div id="navigation"></div>
 <div class="container-fluid pe-5 ps-5">
-    <h3 class="mt-2">Take Off Request</h3>
+    <h3 class="mt-2">Time Off Request</h3>
     <section>
         <div class="row offset-2">
             <div class="col-sm-2 m-3 border border-light rounded bg-light shadow-sm p-3 mb-5 bg-body rounded justify-content-sm-end">
@@ -24,24 +24,26 @@
                 <a href="#">
                     <h3 class="text-dark h3-link active">Sakit</h3>
                 </a>
-                <p>Sakit</p>
+                <p id="amount-sick"></p>
             </div>
             <div class="col-sm-2 m-3 border border-light rounded bg-light shadow-sm p-3 mb-5 bg-body rounded">
                 <a href="#">
                     <h3 class="text-dark h3-link active">Dinas</h3>
                 </a>
+                <p id="amount-dinas"></p>
             </div>
             <div class="col-sm-2 m-3 border border-light rounded bg-light shadow-sm p-3 mb-5 bg-body rounded">
                 <a href="#">
                     <h3 class="text-dark h3-link active">Lembur</h3>
                 </a>
+                <p id="amount-lembur"></p>
             </div>
         </div>
     </section>
     <br><br>
     <section>
         <div class="row">
-            <h3 class="">Take Off</h3>
+            <h3 class="">Time Off</h3>
             <!-- Button trigger modal -->
             <div class="d-grid gap-2 d-md-flex justify-content-sm-end">
                 <button type="button" class="btn btn-primary btn-sm shadow-sm" data-bs-toggle="modal"
@@ -62,28 +64,28 @@
                         <div class="modal-body">
                             <form>
                                 <label>Policy*</label><br>
-                                <select class="form-select shadow-sm" aria-label="Default select example">
+                                <select class="form-select shadow-sm" aria-label="Default select example" id="policy">
                                     <option selected>Select Policy</option>
-                                    <option value="1">Cuti</option>
-                                    <option value="2">Sakit</option>
-                                    <option value="3">Dinas</option>
-                                    <option value="4">Lembur</option>
+                                    <option value="Cuti">Cuti</option>
+                                    <option value="Sakit">Sakit</option>
+                                    <option value="Dinas">Dinas</option>
+                                    <option value="Lembur">Lembur</option>
                                 </select><br>
                                 <div class="row">
                                     <div class="col">
                                         <label>Start Date*</label>
                                         <input placeholder="Select Date" class="form-control shadow-sm" type="text"
-                                               onfocus="(this.type = 'date')">
+                                               onfocus="(this.type = 'date')" id="start-date">
                                     </div>
                                     <div class="col">
                                         <label>End Date*</label>
                                         <input placeholder="Select Date" class="form-control shadow-sm" type="text"
-                                               onfocus="(this.type = 'date')">
+                                               onfocus="(this.type = 'date')" id="end-date">
                                     </div>
                                 </div>
                                 <br>
                                 <label>Noted*</label><br>
-                                <textarea class="form-control shadow-sm" rows="3"></textarea><br>
+                                <textarea class="form-control shadow-sm" rows="3" id="reason"></textarea><br>
                                 <label>Attachment</label>
                                 <input type="file" class="form-control shadow-sm">
                             </form>
@@ -91,7 +93,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary shadow-sm" data-bs-dismiss="modal">Close
                             </button>
-                            <button type="submit" class="btn btn-primary shadow-sm">Submit</button>
+                            <button type="submit" class="btn btn-primary shadow-sm" id="btn-submit">Submit</button>
                         </div>
                     </div>
                 </div>
