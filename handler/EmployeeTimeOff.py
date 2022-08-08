@@ -1,7 +1,9 @@
+import os
 from datetime import datetime, timedelta
 
 from flask_restful import Resource, reqparse
 from flask import request
+from werkzeug.utils import secure_filename
 
 from repositories.time_off import insert_time_off, is_time_off_day_taken, get_paid_leaves_by_user_id, \
     get_time_off_by_user_id
@@ -48,15 +50,24 @@ class EmployeeTimeOff(Resource):
             if is_time_off_day_taken(employee_id, date):
                 return response_error(message=f"Time off in {date} already taken", response_code=400)
 
+        filename = None
+        if 'attachment' in request.files:
+            file = request.files['attachment']
+            if file.filename != '':
+                filename = secure_filename(file.filename)
+                file.save(os.path.join('./Storage', filename))
+
         for date in str_time_off_dates:
-            insert_time_off(employee_id, reason, date, args['policy'])
+            insert_time_off(employee_id, reason, date, args['policy'], filename)
+
+
 
         return response_success(message="data successfully added", response_code=201)
 
     def get(self, employee_id):
         args = request.args
         policy = args.get('policy')
-        if policy is not None and policy not in['Cuti', 'Sakit', 'Dinas', 'Lembur']:
+        if policy is not None and policy not in ['Cuti', 'Sakit', 'Dinas', 'Lembur']:
             return response_error(message="Policy must be one of the following: Cuti, Sakit, Dinas, Lembur",
                                   response_code=400)
 

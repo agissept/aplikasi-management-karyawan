@@ -42,13 +42,14 @@ def is_time_off_day_taken(employee_id, date):
     return cursor.fetchone() is not None
 
 
-def insert_time_off(employee_id, reason, date, policy):
+def insert_time_off(employee_id, reason, date, policy, attachment=None):
     query = MySQLQuery.into(paid_leaves_table) \
         .columns(paid_leaves_table.user_id,
                  paid_leaves_table.reason,
                  paid_leaves_table.date,
-                 paid_leaves_table.policy) \
-        .insert(employee_id, reason, date, policy)
+                 paid_leaves_table.policy,
+                 paid_leaves_table.attachment) \
+        .insert(employee_id, reason, date, policy, attachment)
 
     cursor = getCursor()
     cursor.execute(str(query))
