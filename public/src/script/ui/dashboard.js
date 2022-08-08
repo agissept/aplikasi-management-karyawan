@@ -1,9 +1,13 @@
 import {getTimeOffByUserId, getUserByUserId, insertPaidLeave} from "../repository/api-helper.js";
 
-window.onload = async () => {
-    const user = await getUser()
+const filters = {
+    date: '',
+    policy: '',
+    status: ''
+}
 
-    const timeOff = await getTimeOff(user.id)
+window.onload = async () => {
+    const timeOff = await getTimeOff()
     const paidLeaves = timeOff.filter(timeOff => timeOff.policy === 'Cuti')
     const dinas = timeOff.filter(timeOff => timeOff.policy === 'Dinas')
     const lembur = timeOff.filter(timeOff => timeOff.policy === 'Lembur')
@@ -41,8 +45,9 @@ async function renderTable(paidLeaves) {
     })
 }
 
-async function getTimeOff(userId) {
-    const takenPaidLeaves = await getTimeOffByUserId(userId)
+async function getTimeOff() {
+    const user = await getUser()
+    const takenPaidLeaves = await getTimeOffByUserId(user.id, filters)
     return takenPaidLeaves.data.time_off
 }
 
@@ -71,15 +76,28 @@ document.querySelector('#btn-submit').addEventListener('click', async (event) =>
     const policy = document.querySelector('#policy').value
 
 
-    if(!isPaidLeavePayloadAreValid(startDate, endDate, reason, userId)){
+    if (!isPaidLeavePayloadAreValid(startDate, endDate, reason, userId)) {
         return false
     }
     console.log(startDate, endDate, reason, userId, policy)
     try {
         await insertPaidLeave(userId, startDate, endDate, reason, policy)
-        const paidLeaves = await getTimeOff(user.id)
+        const paidLeaves = await getTimeOff()
         renderTable(paidLeaves)
     } catch (e) {
         alert(e)
     }
+})
+
+document.getElementById('policy-filter').addEventListener('change', async () => {
+    const policy = document.getElementById('policy-filter').value
+    if(policy === "All"){
+        filters.policy = ""
+    }else{
+        filters.policy = policy
+    }
+
+    const timeOff = await getTimeOff()
+
+    renderTable(timeOff)
 })

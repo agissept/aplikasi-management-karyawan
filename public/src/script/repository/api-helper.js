@@ -42,8 +42,21 @@ async function insertPaidLeave(userId, startDate, endDate, reason, policy) {
     return json
 }
 
-async function getTimeOffByUserId(userId) {
-    const response = await fetch(`/employee/${userId}/timeoff`)
+async function getTimeOffByUserId(userId, filters) {
+    const fakeUrl = new URL(`http://test.com/employee/${userId}/timeoff`);
+    if (filters.date){
+        fakeUrl.searchParams.append("date", filters.date);
+    }
+    if (filters.policy){
+        fakeUrl.searchParams.append("policy", filters.policy);
+    }
+    if (filters.status){
+        fakeUrl.searchParams.append("status", filters.status);
+    }
+
+    const realUrl = fakeUrl.href.replace("http://test.com", "");
+
+    const response = await fetch(realUrl)
     const json = await response.json()
 
     if(response.status !== 200) {
