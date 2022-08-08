@@ -60,5 +60,8 @@ class EmployeeTimeOff(Resource):
             return response_error(message="Policy must be one of the following: Cuti, Sakit, Dinas, Lembur",
                                   response_code=400)
 
-        time_off = get_time_off_by_user_id(employee_id, policy)
+        date = args.get('date')
+
+
+        time_off = get_time_off_by_user_id(employee_id, policy, date)
         return response_success(time_off, "time_off")

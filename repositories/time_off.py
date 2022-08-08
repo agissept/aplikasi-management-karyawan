@@ -5,7 +5,7 @@ from repositories.database_config import getCursor
 paid_leaves_table, users_table = Tables('paid_leaves', 'users')
 
 
-def get_time_off_by_user_id(employee_id, policy=None):
+def get_time_off_by_user_id(employee_id, policy=None, date=None):
     query = MySQLQuery.from_(paid_leaves_table).select('*') \
         .join(users_table) \
         .on(paid_leaves_table.user_id == users_table.id) \
@@ -13,6 +13,9 @@ def get_time_off_by_user_id(employee_id, policy=None):
 
     if policy is not None:
         query = query.where(paid_leaves_table.policy == policy)
+
+    if date is not None:
+        query = query.where(paid_leaves_table.date == date)
 
     cursor = getCursor()
     cursor.execute(str(query))

@@ -91,12 +91,22 @@ document.querySelector('#btn-submit').addEventListener('click', async (event) =>
 
 document.getElementById('policy-filter').addEventListener('change', async () => {
     const policy = document.getElementById('policy-filter').value
-    if(policy === "All"){
+    if (policy === "All") {
         filters.policy = ""
-    }else{
+    } else {
         filters.policy = policy
     }
 
+    const timeOff = await getTimeOff()
+
+    renderTable(timeOff)
+})
+
+// document.getElementById('status-filter').addEventListener('change', async () => {
+// })
+
+document.getElementById('date-filter').addEventListener('change', async () => {
+    filters.date = document.getElementById('date-filter').value
     const timeOff = await getTimeOff()
 
     renderTable(timeOff)
