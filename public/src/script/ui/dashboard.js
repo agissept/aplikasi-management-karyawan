@@ -34,14 +34,22 @@ async function renderTable(paidLeaves) {
     const container = document.querySelector('#paid-leaves-table')
     container.innerHTML = ""
     paidLeaves.forEach(paidLeave => {
+        let attachmentContent = paidLeave.attachment
+        if (attachmentContent && attachmentContent.length > 5) {
+            attachmentContent = attachmentContent.substring(0, 15) + '...';
+        }
+        let attachmentElement = attachmentContent ? `<a href="/storage/${paidLeave.attachment}" target="_blank">${attachmentContent}</a>` : attachmentContent;
+        console.log(attachmentElement)
+
         const row = document.createElement('tr')
         row.innerHTML = `
             <td>${paidLeave.created_at}</td>
             <td>${paidLeave.policy}</td>
             <td>${paidLeave.date}</td>
             <td>Approved</td>
-            <td>${paidLeave.attachment}</td>
+            <td>${attachmentElement}</td>
         `
+
         container.appendChild(row)
     })
 }
