@@ -24,13 +24,14 @@ async function getUserByUserId(userId) {
     return await response.json()
 }
 
-async function insertPaidLeave(userId, startDate, endDate, reason) {
+async function insertPaidLeave(userId, startDate, endDate, reason, policy) {
     const formData = new FormData();
     formData.append("reason", reason);
     formData.append("start_date", startDate);
     formData.append("end_date", endDate);
+    formData.append("policy", policy);
 
-    const response = await fetch(`/employee/${userId}/paidleaves`, {
+    const response = await fetch(`/employee/${userId}/timeoff`, {
         method: 'POST',
         body: formData
     })
@@ -41,8 +42,8 @@ async function insertPaidLeave(userId, startDate, endDate, reason) {
     return json
 }
 
-async function getPaidLeavesByUserId(userId) {
-    const response = await fetch(`/employee/${userId}/paidleaves`)
+async function getTimeOffByUserId(userId) {
+    const response = await fetch(`/employee/${userId}/timeoff`)
     const json = await response.json()
 
     if(response.status !== 200) {
@@ -92,7 +93,7 @@ export {
     getUserByUserId,
     registerUser,
     insertPaidLeave,
-    getPaidLeavesByUserId,
+    getTimeOffByUserId,
     submitAttendance,
     getAttendancesByUserId,
     authenticate
