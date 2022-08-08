@@ -17,7 +17,8 @@
                 <a href="#">
                     <h3 class="text-dark active">Sisa Cuti</h3>
                 </a>
-                <p>Cuti Tahun 2022</p>
+                <p>Cuti sudah diambil: <span id="taken_paid_leaves"></span></p>
+                <p>Cuti yang tersedia: <span id="rest_paid_leaves"></span></p>
             </div>
             <div class="col-sm-2 m-3 border border-light rounded bg-light shadow-sm p-3 mb-5 bg-body rounded">
                 <a href="#">
@@ -132,19 +133,7 @@
                         <th scope="col">Attacment</th>
                     </tr>
                     </thead>
-                    <br>
-                    <tbody class="text-center">
-                    <?php for($i = 1; $i <= 5; $i++) : ?>
-                    <?php if ($i %2 == 0) : ?>
-                    <tr class="warna-baris">
-                        <?php else :?>
-                    <tr>
-                        <?php endif; ?>
-                        <?php for($j = 1; $j <= 5; $j++) : ?>
-                        <td><?php echo "$i, $j"; ?></td>
-                        <?php endfor; ?>
-                    </tr>
-                    <?php endfor; ?>
+                    <tbody class="text-center" id="paid-leaves-table">
                     </tbody>
 
                 </table>
@@ -172,5 +161,6 @@
     </section>
 </div>
 
+<script src="src/script/ui/dashboard.js" type="module"></script>
 </body>
 </html>
