@@ -1,4 +1,4 @@
-import {getPaidLeavesByUserId, getUserByUserId, insertPaidLeave} from "../repository/api-helper.js";
+import {getTimeOffByUserId, getUserByUserId, insertPaidLeave} from "../repository/api-helper.js";
 
 var selectedRow = null
 
@@ -137,7 +137,7 @@ document.querySelector('#btn-submit').addEventListener('click', async (event) =>
 
 async function getPaidLeaves() {
     const userId = sessionStorage.getItem("userId")
-    const paidLeaves = (await getPaidLeavesByUserId(userId)).data.paid_leaves
+    const paidLeaves = (await getTimeOffByUserId(userId)).data.paid_leaves
     const table = document.querySelector('#paid-leave-table tbody')
     table.innerHTML = ''
     for (let paidLeave of paidLeaves) {
