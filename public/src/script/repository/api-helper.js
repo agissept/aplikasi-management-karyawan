@@ -24,12 +24,15 @@ async function getUserByUserId(userId) {
     return await response.json()
 }
 
-async function insertPaidLeave(userId, startDate, endDate, reason, policy) {
+async function insertPaidLeave(userId, startDate, endDate, reason, policy, attacment = null) {
     const formData = new FormData();
     formData.append("reason", reason);
     formData.append("start_date", startDate);
     formData.append("end_date", endDate);
     formData.append("policy", policy);
+    if(attacment) {
+        formData.append("attachment", attacment);
+    }
 
     const response = await fetch(`/employee/${userId}/timeoff`, {
         method: 'POST',

@@ -74,16 +74,18 @@ document.querySelector('#btn-submit').addEventListener('click', async (event) =>
     const reason = document.querySelector('#reason').value
     const userId = user.id
     const policy = document.querySelector('#policy').value
+    const attachment = document.querySelector('#attachment').files[0]
 
 
     if (!isPaidLeavePayloadAreValid(startDate, endDate, reason, userId)) {
         return false
     }
-    console.log(startDate, endDate, reason, userId, policy)
     try {
-        await insertPaidLeave(userId, startDate, endDate, reason, policy)
+        await insertPaidLeave(userId, startDate, endDate, reason, policy, attachment)
         const paidLeaves = await getTimeOff()
         renderTable(paidLeaves)
+        document.querySelector('#close-modal').click()
+        alert("success")
     } catch (e) {
         alert(e)
     }
