@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Aug 08, 2022 at 04:30 PM
+-- Generation Time: Aug 09, 2022 at 02:04 PM
 -- Server version: 10.8.3-MariaDB-1:10.8.3+maria~jammy
 -- PHP Version: 8.0.20
 
@@ -45,7 +45,8 @@ INSERT INTO `attendances` (`id`, `user_id`, `created_at`) VALUES
 (15, 1111, '2022-08-03 00:15:10'),
 (16, 1111, '2022-08-03 00:15:11'),
 (17, 1111, '2022-08-03 00:15:11'),
-(18, 1111, '2022-08-04 15:47:25');
+(18, 1111, '2022-08-04 15:47:25'),
+(19, 1111, '2022-08-09 14:03:47');
 
 -- --------------------------------------------------------
 
@@ -98,8 +99,12 @@ INSERT INTO `pegawai` (`nip`, `nama_lengkap`, `alamat_kota`, `usia`, `kode_jabat
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `full_name` varchar(50) NOT NULL,
+  `gender` varchar(11) DEFAULT NULL,
   `password` varchar(50) NOT NULL,
   `role` enum('admin','employee') NOT NULL DEFAULT 'employee',
+  `phone` varchar(20) DEFAULT NULL,
+  `birthdate` date DEFAULT NULL,
+  `profile_picture` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `time_stamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -108,13 +113,13 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `full_name`, `password`, `role`, `created_at`, `time_stamp`) VALUES
-(111, '111', '111', 'employee', '2022-08-03 17:12:25', '2022-08-03 17:12:25'),
-(121, '121', '121', 'employee', '2022-07-31 07:15:20', '2022-07-31 07:15:20'),
-(1111, 'Asep', '1111', 'employee', '2022-07-31 07:41:18', '2022-07-31 07:41:18'),
-(2222, 'tatang', '2222', 'employee', '2022-08-04 16:43:00', '2022-08-04 16:43:00'),
-(12131, 'asdsad', '1234', 'employee', '2022-07-31 06:18:26', '2022-07-31 06:18:26'),
-(123456, '123456', '123456', 'employee', '2022-08-03 16:52:28', '2022-08-03 16:52:28');
+INSERT INTO `users` (`id`, `full_name`, `gender`, `password`, `role`, `phone`, `birthdate`, `profile_picture`, `created_at`, `time_stamp`) VALUES
+(111, 'Asep 123', 'Male', '111', 'employee', '1111', '2022-05-21', '', '2022-08-03 17:12:25', '2022-08-03 17:12:25'),
+(121, 'Asep 123', 'Male', '121', 'employee', '1111', '2022-05-21', '', '2022-07-31 07:15:20', '2022-07-31 07:15:20'),
+(1111, 'Asep zzzz', 'Male', '1111', 'employee', '1111', '2022-05-21', '', '2022-07-31 07:41:18', '2022-07-31 07:41:18'),
+(2222, 'Asep 123', 'Male', '2222', 'employee', '1111', '2022-05-21', '', '2022-08-04 16:43:00', '2022-08-04 16:43:00'),
+(12131, 'Asep 123', 'Male', '1234', 'employee', '1111', '2022-05-21', '', '2022-07-31 06:18:26', '2022-07-31 06:18:26'),
+(123456, 'Asep 123', 'Male', '123456', 'employee', '1111', '2022-05-21', '', '2022-08-03 16:52:28', '2022-08-03 16:52:28');
 
 --
 -- Indexes for dumped tables
@@ -153,7 +158,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `attendances`
 --
 ALTER TABLE `attendances`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `paid_leaves`
