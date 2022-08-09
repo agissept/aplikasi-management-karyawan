@@ -47,7 +47,8 @@ def update_user_profile(user_id, full_name=None, gender=None, phone_number=None,
 
     if new_password is not None:
         query = query.set(users_table.password, new_password)
-    query.where(users_table.id == user_id)
+
+    query = query.where(users_table.id == user_id)
+
     cursor = getCursor()
     cursor.execute(str(query))
-
