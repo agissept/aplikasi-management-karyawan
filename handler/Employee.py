@@ -16,7 +16,7 @@ class Employee(Resource):
         return
 
     def get(self, employee_id):
-        employee = users.get_employees_by_id(employee_id)
+        employee = users.get_user_by_id(employee_id)
         return json.loads(json.dumps(employee,  default=str))
 
 

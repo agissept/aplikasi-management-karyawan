@@ -1,7 +1,7 @@
 from flask_restful import Resource, reqparse
 
 from repositories import users
-from repositories.users import get_employees_by_id
+from repositories.users import get_user_by_id
 from utils.response_handler import response_error
 
 parser = reqparse.RequestParser()
@@ -16,7 +16,7 @@ class RegisterEmployee(Resource):
         employee_id = args['id']
         name = args['full_name']
         password = args['password']
-        if get_employees_by_id(employee_id) is not None:
+        if get_user_by_id(employee_id) is not None:
             return response_error(message="Employee already exists", response_code=400)
 
         users.register_employee(employee_id, name, password)

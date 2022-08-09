@@ -30,7 +30,7 @@ async function insertPaidLeave(userId, startDate, endDate, reason, policy, attac
     formData.append("start_date", startDate);
     formData.append("end_date", endDate);
     formData.append("policy", policy);
-    if(attacment) {
+    if (attacment) {
         formData.append("attachment", attacment);
     }
 
@@ -39,7 +39,7 @@ async function insertPaidLeave(userId, startDate, endDate, reason, policy, attac
         body: formData
     })
     const json = await response.json()
-    if(response.status !== 201) {
+    if (response.status !== 201) {
         throw new Error(`Insert Paid Leave Failed : ${json.message}`)
     }
     return json
@@ -47,13 +47,13 @@ async function insertPaidLeave(userId, startDate, endDate, reason, policy, attac
 
 async function getTimeOffByUserId(userId, filters) {
     const fakeUrl = new URL(`http://test.com/employee/${userId}/timeoff`);
-    if (filters.date){
+    if (filters.date) {
         fakeUrl.searchParams.append("date", filters.date);
     }
-    if (filters.policy){
+    if (filters.policy) {
         fakeUrl.searchParams.append("policy", filters.policy);
     }
-    if (filters.status){
+    if (filters.status) {
         fakeUrl.searchParams.append("status", filters.status);
     }
 
@@ -62,7 +62,7 @@ async function getTimeOffByUserId(userId, filters) {
     const response = await fetch(realUrl)
     const json = await response.json()
 
-    if(response.status !== 200) {
+    if (response.status !== 200) {
         throw new Error(`Get Paid Leaves Failed : ${json.message}`)
     }
     return json
@@ -73,7 +73,7 @@ async function submitAttendance(userId) {
         method: 'POST',
     })
     const json = await response.json()
-    if(response.status !== 201) {
+    if (response.status !== 201) {
         throw new Error(`Submit Attendance Failed : ${json.message}`)
     }
 }
@@ -82,7 +82,7 @@ async function getAttendancesByUserId(userId) {
     const response = await fetch(`/employee/${userId}/attendances`)
     const json = await response.json()
 
-    if(response.status !== 200) {
+    if (response.status !== 200) {
         throw new Error(`Get Attendances Failed : ${json.message}`)
     }
     return json
@@ -99,10 +99,49 @@ async function authenticate(username, password) {
     })
 
     const json = await response.json()
-    if(response.status !== 200) {
+    if (response.status !== 200) {
         throw new Error(`Login Failed : ${json.message}`)
     }
     return json
+}
+
+async function getUserProfileById(userId) {
+    const response = await fetch(`/userprofile/${userId}`)
+    return await response.json()
+}
+
+async function updateProfile(userId, fullName  = null, phone = null, gender = null, birthdate = null, profilePicture = null) {
+    const formData = new FormData();
+    if (fullName) {
+        formData.append("full_name", fullName);
+    }
+    if (phone) {
+        formData.append("phone_number", phone);
+    }
+
+    if (gender){
+        formData.append("gender", gender)
+    }
+
+    if (birthdate){
+        formData.append("birthdate", birthdate)
+    }
+
+    if (profilePicture){
+        formData.append("profile_picture", profilePicture)
+    }
+
+    const response = await fetch(`/userprofile/${userId}`, {
+        method: 'PUT',
+        body: formData
+    })
+
+    const json = await response.json()
+    if (response.status !== 201) {
+        throw new Error(`Update User Failed : ${json.message}`)
+    }
+    return json
+
 }
 
 export {
@@ -112,5 +151,7 @@ export {
     getTimeOffByUserId,
     submitAttendance,
     getAttendancesByUserId,
-    authenticate
+    authenticate,
+    getUserProfileById,
+    updateProfile
 };
