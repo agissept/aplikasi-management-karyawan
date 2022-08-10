@@ -53,3 +53,18 @@ def insert_time_off(employee_id, reason, date, policy, attachment=None):
 
     cursor = getCursor()
     cursor.execute(str(query))
+
+
+def get_all_time_off():
+    query = MySQLQuery.from_(paid_leaves_table).select('*')
+    cursor = getCursor()
+    cursor.execute(str(query))
+    return cursor.fetchall()
+
+
+def update_time_off_status(time_off_id, status):
+    query = MySQLQuery.update(paid_leaves_table) \
+        .set(paid_leaves_table.status, status) \
+        .where(paid_leaves_table.id == time_off_id)
+    cursor = getCursor()
+    cursor.execute(str(query))

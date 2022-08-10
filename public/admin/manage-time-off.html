@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Time Off</title>
+    <script src="/src/script/ui/utils/base.js" type="module"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a href=#><img src="/src/image/logo-icon.png" alt="FantasyCode" width="100px" class="m-1"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a href="/admin/dashboard.html" class="nav-link">
+                        <i class="text-center fas fa-house-user"></i>
+                        Manage User
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href='/admin/manage-time-off.html' class="nav-link"><i class="fa-solid fa-clock"></i>
+                        Manage Time Off
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid pe-5 ps-5">
+    <div class="row">
+        <h3 class="">Manage Time Off</h3>
+        <form>
+
+
+            <table class="table table-hover border border-light rounded bg-light shadow-sm p-3 mb-5 bg-body border-2"
+                   border="1" cellpadding="10" cellspacing="0">
+                <thead>
+                <tr class="text-center">
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Policy Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Notes</th>
+                    <th scope="col">Attachment</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody class="text-center" id="time-off-table">
+                </tbody>
+
+            </table>
+        </form>
+    </div>
+</div>
+
+<script src="/src/script/ui/manage-time-off.js" type="module"></script>
+
+</body>
+</html>

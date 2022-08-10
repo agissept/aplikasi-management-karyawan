@@ -171,6 +171,26 @@ async function getAllEmployees() {
     return await response.json()
 }
 
+async function getAllTimeOff() {
+    const response = await fetch(`/timeoff`)
+    return await response.json()
+}
+
+async function updateTimeOffStatus(timeOffId, status) {
+    const formData = new FormData();
+    formData.append("status", status);
+    const response = await fetch(`/timeoff/${timeOffId}`, {
+        method: 'PUT',
+        body: formData
+    })
+
+    const json = await response.json()
+    if (response.status !== 201) {
+        throw new Error(`Update Time Off Failed : ${json.message}`)
+    }
+    return json
+}
+
 export {
     getUserByUserId,
     registerUser,
@@ -182,5 +202,7 @@ export {
     getUserProfileById,
     updateProfile,
     getAllEmployees,
-    deleteEmployee
+    deleteEmployee,
+    getAllTimeOff,
+    updateTimeOffStatus
 };
