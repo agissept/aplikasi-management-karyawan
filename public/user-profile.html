@@ -14,45 +14,58 @@
 </head>
 <body>
 <div id="navigation"></div>
-<div class="update-profile">
-    <form>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" id="user_profile_picture">
-        <div class="flex">
+<div class="update-profile d-flex justify-content-center p-5">
+    <form class="d-flex flex-column card p-5 shadow-sm rounded border-light">
+        <div class="text-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                 id="user_profile_picture" width="150" height="150">
+        </div>
+        <div class="flex d-flex justify-content-between" style="gap: 15px;">
             <div class="inputBox">
-                <span>User id:</span>
-                <input type="text"  disabled name="user_id" class="box" id="user_id">
+                <label class="mt-3">User id:</label>
+                <input type="text" disabled name="user_id" class="form-control" id="user_id">
 
-                <span>Full name :</span>
-                <input type="text" name="full_name" class="box" id="input_full_name">
+                <label class="mt-3">Full name :</label>
+                <input type="text" name="full_name" class="form-control" id="input_full_name">
 
-                <span>Gender :</span>
-                <input type="radio" name="gender" value="Male" id="input_gender_male"> Male
-                <input type="radio" name="gender" value="Female" id="input_gender_female"> Female
+                <div>
+                    <label class="mt-3">Gender :</label>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" name="gender" value="Male" class="form-check-input" id="input_gender_male">
+                        Male
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" name="gender" value="Female" class="form-check-input"
+                               id="input_gender_female">
+                        Female
+                    </div>
+                </div>
 
-                <span>Phone :</span>
-                <input type="text" name="phone" class="box" id="input_phone">
+                <label class="mt-3">Phone :</label>
+                <input type="text" name="phone" class="form-control" id="input_phone">
 
-                <span>Birthdate :</span>
-                <input type="date" name="birthdate" class="box" id="input_birthdate">
+                <label class="mt-3">Birthdate :</label>
+                <input type="date" name="birthdate" class="form-control" id="input_birthdate">
 
             </div>
             <div class="inputBox">
                 <input type="hidden" name="old_pass">
 
-                <span>Old Password :</span>
-                <input type="password" name="update_pass" placeholder="enter previous password" class="box">
+                <label class="mt-3">Old Password :</label>
+                <input type="password" name="update_pass" placeholder="enter previous password" class="form-control">
 
-                <span>New Password :</span>
-                <input type="password" name="new_pass" placeholder="enter new password" class="box">
+                <label class="mt-3">New Password :</label>
+                <input type="password" name="new_pass" placeholder="enter new password" class="form-control">
 
-                <span>Confirm Password :</span>
-                <input type="password" name="confirm_pass" placeholder="confirm new password" class="box">
+                <label class="mt-3">Confirm Password :</label>
+                <input type="password" name="confirm_pass" placeholder="confirm new password" class="form-control">
 
-                <span>Update Your Profile Picture :</span>
-                <input type="file" name="update_image" accept="image/jpg, image/jpeg, image/png" class="box" id="input_profile_picture">
+                <label class="mt-3">Update Your Profile Picture :</label>
+                <input type="file" name="update_image" accept="image/jpg, image/jpeg, image/png" class="form-control"
+                       id="input_profile_picture">
             </div>
         </div>
-        <button class="btn btn-outline-primary" id="btn-update-profile">Update</button>
+        <button class="btn btn-outline-primary mt-5" id="btn-update-profile">Update</button>
     </form>
 </div>
 <script src="src/script/ui/user-profile.js" type="module"></script>
