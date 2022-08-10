@@ -62,3 +62,9 @@ def get_all_employees():
     cursor = getCursor()
     cursor.execute(str(query))
     return cursor.fetchall()
+
+
+def delete_user(employee_id):
+    query = MySQLQuery.from_(users_table).delete().where(users_table.id == employee_id)
+    cursor = getCursor()
+    cursor.execute(str(query))
