@@ -1,4 +1,7 @@
-import {getTimeOffByUserId, getUserByUserId, insertPaidLeave} from "../repository/api-helper.js";
+import {getTimeOffByUserId, insertPaidLeave} from "../repository/api-helper.js";
+import {
+    getUser
+} from "../repository/session-storage.js";
 
 const filters = {
     date: '',
@@ -13,7 +16,7 @@ window.onload = async () => {
     const lembur = timeOff.filter(timeOff => timeOff.policy === 'Lembur')
     const sick = timeOff.filter(timeOff => timeOff.policy === 'Sakit')
 
-    renderTable(timeOff)
+    await renderTable(timeOff)
 
     document.querySelector('#rest_paid_leaves').innerHTML = 12 - paidLeaves.length
     document.querySelector('#taken_paid_leaves').innerHTML = paidLeaves.length
@@ -22,13 +25,6 @@ window.onload = async () => {
     document.querySelector('#amount-sick').innerHTML = sick.length
 }
 
-async function getUser() {
-    const userId = sessionStorage.getItem("userId")
-    if (userId === null) {
-        window.location.href = "/"
-    }
-    return await getUserByUserId(userId)
-}
 
 async function renderTable(paidLeaves) {
     const container = document.querySelector('#paid-leaves-table')
@@ -110,7 +106,7 @@ document.getElementById('policy-filter').addEventListener('change', async () => 
 
     const timeOff = await getTimeOff()
 
-    renderTable(timeOff)
+    await renderTable(timeOff)
 })
 
 // document.getElementById('status-filter').addEventListener('change', async () => {
@@ -120,5 +116,5 @@ document.getElementById('date-filter').addEventListener('change', async () => {
     filters.date = document.getElementById('date-filter').value
     const timeOff = await getTimeOff()
 
-    renderTable(timeOff)
+    await renderTable(timeOff)
 })

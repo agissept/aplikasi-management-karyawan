@@ -1,5 +1,5 @@
 import {registerUser} from '../repository/api-helper.js'
-import "./utils.js";
+import "./utils/user-id-validator.js";
 
 const inputs = document.querySelectorAll(".input");
 

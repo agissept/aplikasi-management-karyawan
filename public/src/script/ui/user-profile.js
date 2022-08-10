@@ -1,9 +1,7 @@
 import {getUserProfileById, updateProfile} from '/src/script/repository/api-helper.js'
+import {getUser} from "../repository/session-storage";
 
-const userId = sessionStorage.getItem("userId")
-if (userId === null) {
-    window.location.href = "/"
-}
+const userId = getUser().id
 
 async function renderUserProfile() {
     const {data} = await getUserProfileById(userId)
