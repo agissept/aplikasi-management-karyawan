@@ -41,7 +41,7 @@ async function renderTable(paidLeaves) {
             <td>${paidLeave.created_at}</td>
             <td>${paidLeave.policy}</td>
             <td>${paidLeave.date}</td>
-            <td>Approved</td>
+            <td>${paidLeave.status}</td>
             <td>${attachmentElement}</td>
         `
 
