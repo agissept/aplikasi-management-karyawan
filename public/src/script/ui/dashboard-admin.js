@@ -82,7 +82,6 @@ function renderBtnEditUser() {
             const employee = await getUserByUserId(id);
             document.querySelector('#edit-input-employee-id').value = employee.id;
             document.querySelector('#edit-input-full-name').value = employee.full_name;
-            document.querySelector('#edit-input-password').value = employee.password;
             document.querySelector('#edit-input-phone').value = employee.phone;
             document.querySelector('#edit-input-birthdate').value = employee.birthdate;
 
