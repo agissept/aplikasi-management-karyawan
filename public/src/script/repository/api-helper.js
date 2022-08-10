@@ -1,8 +1,18 @@
-async function registerUser(username, password, fullName) {
+async function registerUser(userId, password, fullName, birthdate = null, phone = null, gender = null){
     const formData = new FormData();
-    formData.append("id", username);
+    formData.append("id", userId);
     formData.append("password", password);
     formData.append("full_name", fullName);
+    if (birthdate) {
+        formData.append("birthdate", birthdate);
+    }
+    if (phone) {
+        formData.append("phone_number", phone);
+    }
+
+    if (gender) {
+        formData.append("gender", gender)
+    }
 
     const response = await fetch(`/employee`, {
         method: 'POST',
@@ -141,7 +151,24 @@ async function updateProfile(userId, fullName  = null, phone = null, gender = nu
         throw new Error(`Update User Failed : ${json.message}`)
     }
     return json
+}
 
+async function deleteEmployee(employeeId) {
+    const response = await fetch(`/employee/${employeeId}`, {
+        method: 'DELETE'
+    })
+    const json = await response.json()
+
+    if(response.status !== 200){
+        throw new Error(`Delete Employee Failed : ${json.message}`)
+    }
+
+    return json
+}
+
+async function getAllEmployees() {
+    const response = await fetch(`/employee`)
+    return await response.json()
 }
 
 export {
@@ -153,5 +180,7 @@ export {
     getAttendancesByUserId,
     authenticate,
     getUserProfileById,
-    updateProfile
+    updateProfile,
+    getAllEmployees,
+    deleteEmployee
 };

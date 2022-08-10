@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/src/script/ui/utils/base.js" type="module"></script>
+    <title>Dashboard</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a href=#><img src="/src/image/logo-icon.png" alt="FantasyCode" width="100px" class="m-1"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a href="/admin/dashboard.html" class="nav-link">
+                        <i class="text-center fas fa-house-user"></i>
+                        Manage User
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href='/manage-time-off.html' class="nav-link"><i class="fa-solid fa-clock"></i>
+                        Manage Time off
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
+                </li>
+            </ul>
+        </div>
+        `
+    </div>
+</nav>
+
+<div class="container-fluid pe-5 ps-5">
+    <div class="row">
+        <h3 class="">Manage User</h3>
+        <!-- Button trigger modal -->
+        <div class="d-grid gap-2 d-md-flex justify-content-sm-end">
+            <button type="button" class="btn btn-primary btn-sm shadow-sm" data-bs-toggle="modal"
+                    data-bs-target="#modal-add-user">
+                Add User
+            </button>
+        </div>
+
+        <!-- Modal -->
+
+        <form>
+
+
+            <table class="table table-hover border border-light rounded bg-light shadow-sm p-3 mb-5 bg-body border-2"
+                   border="1" cellpadding="10" cellspacing="0">
+                <thead>
+                <tr class="text-center">
+                    <th scope="col">Employee Id</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Birth Date</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody class="text-center" id="employees-table">
+                </tbody>
+
+            </table>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-add-user" tabindex="-1" aria-labelledby="modal-add-user-label"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-add-user-label">Add User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <label class="mt-2">Employee Id</label>
+                    <input type="number" class="form-control" placeholder="Employee Id" id="input-employee-id">
+                    <label class="mt-2">Full Name</label>
+                    <input type="text" class="form-control" placeholder="Full Name" id="input-full-name">
+                    <label class="mt-2">Password</label>
+                    <input type="password" class="form-control" placeholder="Password" id="input-password">
+                    <label class="mt-2">Phone</label>
+                    <input type="text" class="form-control" placeholder="Phone" id="input-phone">
+                    <div>
+                        <label class="mt-3">Gender :</label>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="gender" value="Male" class="form-check-input" id="input-gender-male">
+                            Male
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="gender" value="Female" class="form-check-input"
+                                   id="input-gender-female">
+                            Female
+                        </div>
+                    </div>
+                    <label class="mt-3">Birthdate :</label>
+                    <input type="date" name="birthdate" class="form-control" id="input-birthdate">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary shadow-sm" data-bs-dismiss="modal"
+                        id="close-modal-add-user">Close
+                </button>
+                <button type="submit" class="btn btn-primary shadow-sm" id="btn-submit-add-user">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-edit-user" tabindex="-1" aria-labelledby="modal-edit-user-label"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-edit-user-label">Edit User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <label class="mt-2">Employee Id</label>
+                    <input type="number" class="form-control" disabled placeholder="Employee Id" id="edit-input-employee-id">
+                    <label class="mt-2">Full Name</label>
+                    <input type="text" class="form-control" placeholder="Full Name" id="edit-input-full-name">
+                    <label class="mt-2">Phone</label>
+                    <input type="text" class="form-control" placeholder="Phone" id="edit-input-phone">
+                    <div>
+                        <label class="mt-3">Gender :</label>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="gender" value="Male" class="form-check-input" id="edit-input-gender-male">
+                            Male
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="gender" value="Female" class="form-check-input"
+                                   id="edit-input-gender-female">
+                            Female
+                        </div>
+                    </div>
+                    <label class="mt-3">Birthdate :</label>
+                    <input type="date" name="birthdate" class="form-control" id="edit-input-birthdate">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary shadow-sm" data-bs-dismiss="modal"
+                        id="close-modal-edit-user">Close
+                </button>
+                <button type="submit" class="btn btn-primary shadow-sm" id="btn-submit-edit-user">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/src/script/ui/dashboard-admin.js" type="module"></script>
+</body>
+</html>

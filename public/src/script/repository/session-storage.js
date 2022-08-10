@@ -8,7 +8,17 @@ async function getUser() {
     return await getUserByUserId(userId)
 }
 
+async function getAdmin() {
+    const userId = sessionStorage.getItem("userId")
+    const user = await getUserByUserId(userId)
+    if (userId === null || user.role !== "admin") {
+        window.location.href = "/"
+    }
+    return user
+}
+
 
 export {
-    getUser
+    getUser,
+    getAdmin
 }
