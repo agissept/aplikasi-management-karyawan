@@ -12,10 +12,13 @@ def get_user_by_id(employee_id):
     return cursor.fetchone()
 
 
-def register_employee(employee_id, full_name, password):
-    query = 'INSERT INTO users (id, full_name, password) VALUES (%s, %s, %s)'
-    values = (employee_id, full_name, password)
-    getCursor().execute(query, values)
+def register_employee(employee_id, full_name, password, gender=None, phone_number=None, birthdate=None):
+    query = MySQLQuery.into(users_table) \
+        .columns(users_table.id, users_table.full_name, users_table.password, users_table.role, users_table.gender,
+                 users_table.phone, users_table.birthdate) \
+        .insert(employee_id, full_name, password, 'employee', gender, phone_number, birthdate)
+    cursor = getCursor()
+    cursor.execute(str(query))
 
 
 def login(employee_id, password):
@@ -52,3 +55,10 @@ def update_user_profile(user_id, full_name=None, gender=None, phone_number=None,
 
     cursor = getCursor()
     cursor.execute(str(query))
+
+
+def get_all_employees():
+    query = MySQLQuery.from_(users_table).select('*').where(users_table.role == 'employee')
+    cursor = getCursor()
+    cursor.execute(str(query))
+    return cursor.fetchall()
