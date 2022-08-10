@@ -2,7 +2,7 @@ from flask_restful import Resource, reqparse
 
 from repositories import users
 from repositories.users import get_user_by_id
-from utils.response_handler import response_error
+from utils.response_handler import response_error, response_success
 
 parser = reqparse.RequestParser()
 parser.add_argument('id', type=int, required=True)
@@ -20,6 +20,4 @@ class RegisterEmployee(Resource):
             return response_error(message="Employee already exists", response_code=400)
 
         users.register_employee(employee_id, name, password)
-        return {
-            "success": True
-        }
+        return response_success(message="Employee successfully registered", response_code=201)
