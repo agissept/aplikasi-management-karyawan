@@ -40,28 +40,31 @@ async function renderTableTimeOff() {
 }
 
 function renderBtn() {
+    document.querySelectorAll('.btn-accept-time-off').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+            const timeOffId = e.target.getAttribute('data-time-off-id');
+            try {
+                await updateTimeOffStatus(timeOffId, "Accepted");
+                await renderTableTimeOff();
+                alert("Time off has been accepted");
+            } catch (e) {
+                alert(e.message);
+            }
 
-    document.querySelector('.btn-accept-time-off').addEventListener('click', async (e) => {
-        const timeOffId = e.target.getAttribute('data-time-off-id');
-        try {
-            await updateTimeOffStatus(timeOffId, "Accepted");
-            await renderTableTimeOff();
-            alert("Time off has been accepted");
-        } catch (e) {
-            alert(e.message);
-        }
-
+        })
     })
 
-    document.querySelector('.btn-reject-time-off').addEventListener('click', async (e) => {
-        const timeOffId = e.target.getAttribute('data-time-off-id');
-        try {
-            await updateTimeOffStatus(timeOffId, "Rejected");
-            await renderTableTimeOff();
-            alert("Time off has been rejected");
-        } catch (e) {
-            alert(e.message);
-        }
+    document.querySelectorAll('.btn-reject-time-off').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+            const timeOffId = e.target.getAttribute('data-time-off-id');
+            try {
+                await updateTimeOffStatus(timeOffId, "Rejected");
+                await renderTableTimeOff();
+                alert("Time off has been rejected");
+            } catch (e) {
+                alert(e.message);
+            }
 
+        })
     })
 }
