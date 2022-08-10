@@ -105,7 +105,7 @@ function validate() {
 async function getUser() {
     const userId = sessionStorage.getItem("userId")
     if (userId === null) {
-        window.location.href = "../../../index.html"
+        window.location.href = "/"
     }
     const user = await getUserByUserId(userId)
 

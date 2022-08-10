@@ -28,7 +28,7 @@ document.querySelector('#submit-attendance-btn').addEventListener('click', async
 async function getUser() {
     const userId = sessionStorage.getItem("userId")
     if (userId === null) {
-        window.location.href = "../pages/index.html"
+        window.location.href = "/"
     }
     return await getUserByUserId(userId)
 }
