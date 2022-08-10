@@ -6,7 +6,6 @@ fetch(`${baseUrl}/navigation.html`).then(response => response.text()).then(html 
 
     document.querySelector('#logout').addEventListener('click', function (e) {
         e.preventDefault()
-        console.log('sdsdsd')
         sessionStorage.removeItem('userId')
         window.location.href = '/'
     })
