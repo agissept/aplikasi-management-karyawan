@@ -33,7 +33,7 @@ async function renderTable(paidLeaves) {
         if (attachmentContent && attachmentContent.length > 5) {
             attachmentContent = attachmentContent.substring(0, 15) + '...';
         }
-        let attachmentElement = attachmentContent ? `<a href="/storage/${paidLeave.attachment}" target="_blank">${attachmentContent}</a>` : attachmentContent;
+        let attachmentElement = attachmentContent ? `<a href="/storage/${paidLeave.attachment}" target="_blank">${attachmentContent}</a>` : '-';
         console.log(attachmentElement)
 
         const row = document.createElement('tr')
