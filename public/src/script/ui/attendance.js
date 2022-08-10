@@ -2,9 +2,8 @@ import {
     submitAttendance,
     getAttendancesByUserId
 } from "../repository/api-helper.js";
-import {
-    getUser
-} from "../repository/session-storage.js";
+import {getUser} from "/src/script/repository/session-storage.js";
+
 
 window.onload = async () => {
     const user = await getUser()

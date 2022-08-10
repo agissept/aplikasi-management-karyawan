@@ -1,7 +1,6 @@
 import {getTimeOffByUserId, insertPaidLeave} from "../repository/api-helper.js";
-import {
-    getUser
-} from "../repository/session-storage.js";
+import {getUser} from "/src/script/repository/session-storage.js";
+
 
 const filters = {
     date: '',

@@ -1,4 +1,4 @@
-import {getUserByUserId} from "./api-helper";
+import {getUserByUserId} from "./api-helper.js";
 
 async function getUser() {
     const userId = sessionStorage.getItem("userId")
