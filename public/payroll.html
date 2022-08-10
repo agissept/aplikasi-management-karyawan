@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slip Gaji</title>
-    <link rel="stylesheet" type="text/css" href="src/style/payroll.css">
     <script src="src/script/ui/base.js" type="module"></script>
     <script src="src/script/component/navigation/navigation.js"></script>
 </head>
@@ -13,68 +12,69 @@
 <div id="navigation"></div>
 <h2 class="text-center">Daftar Gaji Pegawai</h2>
 <div class="container">
-    <div class="card">
+    <div class="card shadow-sm rounded border-light">
         <div class="card-body">
             <div>
-                <label>Nama Lengkap</label>
-                <input type="text" name="nama" id="nama">
+                <label class="mt-2">Nama Lengkap</label>
+                <input class="form-control" type="text" name="nama" id="nama">
             </div>
             <div>
-                <label>Jam Kerja</label>
-                <input type="number" name="jamkrj" id="jamkrj">
+                <label class="mt-2">Jam Kerja</label>
+                <input class="form-control" type="number" name="jamkrj" id="jamkrj">
             </div>
             <div>
-                <label>Upah/Jam</label>
-                <input type="number" name="upahperjam" id="upahperjam">
+                <label class="mt-2">Upah/Jam</label>
+                <input class="form-control" type="number" name="upahperjam" id="upahperjam">
             </div>
             <div>
-                <label>Jam Lembur</label>
-                <input type="number" name="lembur" id="lembur">
+                <label class="mt-2">Jam Lembur</label>
+                <input class="form-control" type="number" name="lembur" id="lembur">
             </div>
             <div>
-                <label>Jumlah Anak</label>
-                <input type="number" name="jmlanak" id="jmlanak">
+                <label class="mt-2">Jumlah Anak</label>
+                <input class="form-control" type="number" name="jmlanak" id="jmlanak">
             </div>
             <div>
-                <button onclick="check()" class="button">Send</button>
+                <button id="btn-send" class="btn mt-4 btn-primary">Send</button>
             </div>
 
-            <!--untuk menampilkan output hasil-->
             <table>
                 <tr>
-                    <td>Gaji Pokok</td>
                     <td>
-                        <disabled id="gajipokok">
+                        <label  class="mt-2">Gaji Pokok</label>
+                        <input class="form-control" disabled id="gajipokok">
                     </td>
                 </tr>
                 <tr>
-                    <td>Tunjangan Anak</td>
                     <td>
-                        <disabled id="tunjangan">
+                        <label  class="mt-2">Tunjangan Anak</label>
+
+                        <input class="form-control" disabled id="tunjangan">
                     </td>
                 </tr>
                 <tr>
-                    <td>Jam Lembur</td>
                     <td>
-                        <disabled id="lembur">
+                        <label  class="mt-2">Jam Lembur</label>
+
+                        <input class="form-control" disabled id="lembur">
                     </td>
                 </tr>
                 <tr>
-                    <td>Total Gaji/Bulan</td>
                     <td>
-                        <disabled id="gajisebelumpajak">
+                        <label  class="mt-2">Total Gaji/Bulan</label>
+                        <input class="form-control" disabled id="gajisebelumpajak">
                     </td>
                 </tr>
                 <tr>
-                    <td>PPH 11%</td>
                     <td>
-                        <disabled id="pajak">
+                        <label  class="mt-2">PPH 11%</label>
+                        <input class="form-control" disabled id="pajak">
                     </td>
                 </tr>
                 <tr>
-                    <td>Gaji Bersih</td>
                     <td>
-                        <disabled id="gajibersih">
+                        <label  class="mt-2">Gaji Bersih</label>
+                        <input class="form-control" disabled id="gajibersih">
                     </td>
                 </tr>
             </table>
@@ -83,6 +83,10 @@
 </div>
 
 <script type="text/javascript">
+
+    document.querySelector('#btn-send').addEventListener('click', (event) => {
+        check()
+    })
 
     var nama;
     var jamkrj;
@@ -101,15 +105,18 @@
         tunjangan = jmlanak * gajipokok / 10;
         totallembur = 0;
         gajisebelumpajak = gajipokok + tunjangan;
+        console.log(gajisebelumpajak)
         pajak = gajisebelumpajak * 11 / 100;
         gajibersih = gajisebelumpajak - pajak;
 
-        document.getElementById('gajipokok').innerHTML = "" + gajipokok;
-        document.getElementById('tunjangan').innerHTML = "" + tunjangan;
-        document.getElementById('lembur').innerHTML = "" + totallembur;
-        document.getElementById('gajisebelumpajak').innerHTML = "" + gajisebelumpajak;
-        document.getElementById('pajak').innerHTML = "" + pajak;
-        document.getElementById('gajibersih').innerHTML = "" + gajibersih;
+        document.getElementById('gajipokok').value =  gajipokok;
+        document.getElementById('tunjangan').value =  tunjangan;
+        document.getElementById('lembur').value =  totallembur;
+        document.getElementById('gajisebelumpajak').value =  gajisebelumpajak;
+        document.getElementById('pajak').value =  pajak;
+        document.getElementById('gajibersih').value =  gajibersih;
+        console.log(document.getElementById('gajibersih'))
+
     }
 </script>
 
